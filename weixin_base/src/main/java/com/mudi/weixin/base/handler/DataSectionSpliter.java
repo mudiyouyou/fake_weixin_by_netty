@@ -4,12 +4,12 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 
-public class Spliter extends LengthFieldBasedFrameDecoder {
+public class DataSectionSpliter extends LengthFieldBasedFrameDecoder {
     private static final int LENGTH_OFFSET = 7;
     private static final int LENGTH_LENGTH = 4;
     private static final int MAGIC_NUM = 0x100782;
 
-    public Spliter() {
+    public DataSectionSpliter() {
         super(Integer.MAX_VALUE, LENGTH_OFFSET, LENGTH_LENGTH);
     }
 

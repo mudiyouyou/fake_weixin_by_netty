@@ -9,15 +9,6 @@ import java.util.stream.Collectors;
 
 public class UserLocalCacheMgr {
     private static List<User> userList = Lists.newCopyOnWriteArrayList();
-    private static User self;
-
-    public static User getSelf() {
-        return self;
-    }
-
-    public static void setSelf(User self) {
-        UserLocalCacheMgr.self = self;
-    }
 
     public static void list() {
         System.out.println("在线用户列表");

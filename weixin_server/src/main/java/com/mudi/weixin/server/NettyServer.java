@@ -1,7 +1,7 @@
 package com.mudi.weixin.server;
 
 import com.mudi.weixin.base.handler.CmdHandler;
-import com.mudi.weixin.base.handler.Spliter;
+import com.mudi.weixin.base.handler.DataSectionSpliter;
 import com.mudi.weixin.server.handler.*;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -21,7 +21,7 @@ public class NettyServer {
                     @Override
                     protected void initChannel(NioSocketChannel ch) throws Exception {
                         ch.pipeline()
-                                .addLast(new Spliter())
+                                .addLast(new DataSectionSpliter())
                                 .addLast(new CmdHandler())
                                 .addLast(LoginRequestHandler.INSTANCE)
                                 .addLast(AuthHandler.INSTANCE)

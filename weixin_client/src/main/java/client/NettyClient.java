@@ -3,7 +3,7 @@ package client;
 import client.console.ConsoleCommandManager;
 import client.handler.*;
 import com.mudi.weixin.base.handler.CmdHandler;
-import com.mudi.weixin.base.handler.Spliter;
+import com.mudi.weixin.base.handler.DataSectionSpliter;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -29,7 +29,7 @@ public class NettyClient {
                     @Override
                     protected void initChannel(NioSocketChannel ch) throws Exception {
                         ch.pipeline()
-                                .addLast(new Spliter())
+                                .addLast(new DataSectionSpliter())
                                 .addLast(new CmdHandler())
                                 .addLast(new LoginResponseHandler())
                                 .addLast(new ChatResponseHandler())
