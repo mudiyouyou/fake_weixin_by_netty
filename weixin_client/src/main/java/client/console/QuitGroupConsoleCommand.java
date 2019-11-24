@@ -1,6 +1,6 @@
 package client.console;
 
-import com.mudi.weixin.base.packet.QuitGroupRequest;
+import com.mudi.weixin.base.cmd.QuitGroupReqCmd;
 import io.netty.channel.Channel;
 
 import java.util.Scanner;
@@ -11,7 +11,7 @@ public class QuitGroupConsoleCommand implements ConsoleCommand {
         System.out.println("准备退出群聊");
         System.out.print("输入群聊组ID");
         String line = scanner.nextLine();
-        QuitGroupRequest req = new QuitGroupRequest();
+        QuitGroupReqCmd req = new QuitGroupReqCmd();
         req.setGroupId(line);
         channel.writeAndFlush(req);
     }

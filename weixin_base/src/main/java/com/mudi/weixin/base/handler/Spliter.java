@@ -1,4 +1,4 @@
-package com.mudi.weixin.server.handler;
+package com.mudi.weixin.base.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

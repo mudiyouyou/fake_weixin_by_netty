@@ -1,7 +1,7 @@
 package com.mudi.weixin.base.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.mudi.weixin.base.packet.AbstractResponse;
+import com.mudi.weixin.base.cmd.AbstractRspCmd;
 import io.netty.channel.Channel;
 import lombok.Data;
 
@@ -20,7 +20,7 @@ public class User {
     private String name;
     @JSONField
     private int status;  // 1:online , 0:offLine
-    private Queue<AbstractResponse> message = new ConcurrentLinkedQueue<>();
+    private Queue<AbstractRspCmd> message = new ConcurrentLinkedQueue<>();
     public User(Channel channel, String id, String name) {
         this.channel = channel;
         this.id = id;
@@ -42,7 +42,7 @@ public class User {
         return Objects.hash(super.hashCode(), id);
     }
 
-    public void send(AbstractResponse response){
+    public void send(AbstractRspCmd response){
         if(status==1){
             channel.writeAndFlush(response);
         }else {

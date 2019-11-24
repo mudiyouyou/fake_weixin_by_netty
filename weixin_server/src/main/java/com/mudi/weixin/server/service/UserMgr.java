@@ -49,4 +49,5 @@ public class UserMgr {
                         .filter(u -> u.getStatus() == User.ON_LINE)
                         .collect(Collectors.toList()));
     }
+
 }

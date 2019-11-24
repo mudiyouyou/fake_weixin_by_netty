@@ -1,18 +1,19 @@
-package com.mudi.weixin.base.packet;
+package com.mudi.weixin.base.cmd;
 
 import com.mudi.weixin.base.model.User;
 import lombok.Data;
 
 @Data
-public class NewComerResponse extends AbstractResponse {
+@CmdType(CmdType.NEW_COMER_RESPONSE)
+public class NewComerRspCmd extends AbstractRspCmd {
     private String groupId;
     private User comer;
-    public NewComerResponse(boolean sucess) {
+    public NewComerRspCmd(boolean sucess) {
         this.setSuccess(sucess);
     }
 
     @Override
     public byte getCommand() {
-        return Command.NEW_COMER_RESPONSE;
+        return CmdType.NEW_COMER_RESPONSE;
     }
 }

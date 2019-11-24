@@ -1,6 +1,7 @@
 package com.mudi.weixin.server;
 
-import com.mudi.weixin.base.handler.PacketCodec;
+import com.mudi.weixin.base.handler.CmdHandler;
+import com.mudi.weixin.base.handler.Spliter;
 import com.mudi.weixin.server.handler.*;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -21,15 +22,14 @@ public class NettyServer {
                     protected void initChannel(NioSocketChannel ch) throws Exception {
                         ch.pipeline()
                                 .addLast(new Spliter())
-                                .addLast(new PacketCodec())
+                                .addLast(new CmdHandler())
                                 .addLast(LoginRequestHandler.INSTANCE)
                                 .addLast(AuthHandler.INSTANCE)
                                 .addLast(ChatRequestHandler.INSTANCE)
                                 .addLast(CreateGroupRequestHandler.INSTANCE)
                                 .addLast(JoinGroupRequestHandler.INSTANCE)
                                 .addLast(UserListRequestHandler.INSTANCE)
-                                .addLast(QuitGroupRequestHandler.INSTANCE)
-                                .addLast(LogoutRequestHandler.INSTANCE);
+                                .addLast(QuitGroupRequestHandler.INSTANCE);
                     }
                 });
         ChannelFuture f = bootstrap.bind(port).sync();

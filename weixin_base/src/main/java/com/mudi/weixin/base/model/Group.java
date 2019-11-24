@@ -1,7 +1,7 @@
 package com.mudi.weixin.base.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.mudi.weixin.base.packet.AbstractResponse;
+import com.mudi.weixin.base.cmd.AbstractRspCmd;
 import com.mudi.weixin.base.utils.IdGenerator;
 import lombok.Data;
 import java.util.HashSet;
@@ -23,7 +23,7 @@ public class Group {
         this.members.add(owner);
     }
 
-    public void send(AbstractResponse response) {
+    public void send(AbstractRspCmd response) {
         for (User user : members) {
             user.send(response);
         }

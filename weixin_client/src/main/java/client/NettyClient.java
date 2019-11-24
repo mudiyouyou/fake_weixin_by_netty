@@ -2,7 +2,8 @@ package client;
 
 import client.console.ConsoleCommandManager;
 import client.handler.*;
-import com.mudi.weixin.base.handler.PacketCodec;
+import com.mudi.weixin.base.handler.CmdHandler;
+import com.mudi.weixin.base.handler.Spliter;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -28,7 +29,8 @@ public class NettyClient {
                     @Override
                     protected void initChannel(NioSocketChannel ch) throws Exception {
                         ch.pipeline()
-                                .addLast(new PacketCodec())
+                                .addLast(new Spliter())
+                                .addLast(new CmdHandler())
                                 .addLast(new LoginResponseHandler())
                                 .addLast(new ChatResponseHandler())
                                 .addLast(new CreateGroupResponseHandler())

@@ -1,6 +1,6 @@
 package com.mudi.weixin.server.handler;
 
-import com.mudi.weixin.base.packet.LoginResponse;
+import com.mudi.weixin.base.cmd.LoginRspCmd;
 import com.mudi.weixin.server.service.SessionMgr;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -17,7 +17,7 @@ public class AuthHandler extends SimpleChannelInboundHandler<Object> {
     protected void channelRead0(ChannelHandlerContext ctx, Object o) throws Exception {
         System.out.println("认证检查");
         if (!SessionMgr.hasLogin(ctx.channel())) {
-            LoginResponse res = new LoginResponse(false, "请先登录再进行其他操作");
+            LoginRspCmd res = new LoginRspCmd(false, "请先登录再进行其他操作");
             ctx.channel().writeAndFlush(res);
             return;
         }

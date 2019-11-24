@@ -1,12 +1,12 @@
 package client.handler;
 
-import com.mudi.weixin.base.packet.LoginResponse;
+import com.mudi.weixin.base.cmd.LoginRspCmd;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
-public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginResponse> {
+public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginRspCmd> {
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, LoginResponse msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, LoginRspCmd msg) throws Exception {
         if (msg.isSuccess()) {
             System.out.println("欢迎你," + msg.getUser().getName());
         } else {

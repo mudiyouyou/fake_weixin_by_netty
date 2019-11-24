@@ -15,7 +15,6 @@ public class ConsoleCommandManager implements ConsoleCommand {
         cmds.put("create group",new CreateGroupConsoleCommand());
         cmds.put("quit group",new QuitGroupConsoleCommand());
         cmds.put("join group",new JoinGroupConsoleCommand());
-        cmds.put("logout",new LogoutConsoleCommand());
         cmds.put("login",new LoginConsoleCommand());
         cmds.put("users",new UserListConsoleCommand());
     }
